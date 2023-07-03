@@ -1,0 +1,31 @@
+{
+  "name": "empty-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "build-dev": "webpack --mode development",
+    "build-prod": "webpack --mode production"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.3.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4",
+    "babel-loader": "^9.1.2",
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.3",
+    "postcss-loader": "^7.3.3",
+    "autoprefixer": "^10.4.14",
+    "sass-loader": "^13.3.2",
+    "node-sass": "^9.0.0",
+    "mini-css-extract-plugin": "^2.7.6"
+  }
+}
