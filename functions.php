@@ -1,5 +1,6 @@
 <?php 
 
+// CSS and JS file includes
 function starterkit_files() {
     wp_enqueue_script('main-starterkit_js', get_theme_file_uri('/dist/main.min.js'), array('jquery'), 1.0, true);
     wp_enqueue_script('main-starterkit_js', get_theme_file_uri('/build/index.js'), array('jquery'), 1.0, true);
@@ -10,4 +11,14 @@ function starterkit_files() {
 }
 
 add_action('wp_enqueue_scripts', 'starterkit_files');
+
+
+function starterkit_features() {
+    register_nav_menu('headerMenu', 'Header Menu');
+    register_nav_menu('footerColOneMenu', 'Footer Column 1 Menu');
+    register_nav_menu('footerColTwoMenu', 'Footer Column 2 Menu');
+    add_theme_support('title-tag');
+}
+
+add_action('after_setup_theme', 'starterkit_features');
 

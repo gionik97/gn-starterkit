@@ -20,21 +20,21 @@ const config = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
+          "css-loader",
           {
-            loader: "css-loader",
+            loader: "postcss-loader",
             options: {
-              importLoaders: 1,
+              postcssOptions: {
+                plugins: ["autoprefixer"],
+                importLoaders: 1,
+              },
             },
           },
-          "postcss-loader",
+          "sass-loader",
         ],
-      },
-      {
-        test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
