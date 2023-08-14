@@ -1,5 +1,35 @@
 <?php 
 
+function hero($args = NULL) {
+    if(!isset($args['title'])) {
+        $args['title'] = get_the_title();
+    }
+    if(!isset($args['subtitle'])) {
+        $args['subtitle'] = get_field('hero_subtitle');
+    }
+    if(!isset($args['image'])) {
+        if(get_field('hero_bg_image') AND !is_archive() AND !is_home()) {
+            $args['image'] = get_field('hero_bg_image')['sizes']['hero_bg_size'];
+        } else {
+            $args['image'] = get_theme_file_uri('/images/ocean.jpg');
+        }
+    }
+    ?>
+    <div class="page-banner">
+        <div class="page-banner__bg-image" 
+                style="background-image: url(<?php echo $args['image'] ?>);">
+        </div>
+
+        <div class="page-banner__content container container--narrow">
+            <h1 class="page-banner__title"><?php echo $args['title'] ?></h1>
+
+            <div class="page-banner__intro">
+                <p><?php echo $args['subtitle']; ?></p>
+            </div>
+        </div>
+    </div>
+<?php }
+
 // CSS and JS file includes
 function starterkit_files() {
     wp_enqueue_script('main-starterkit_js', get_theme_file_uri('/dist/main.min.js'), array('jquery'), 1.0, true);
@@ -18,6 +48,10 @@ function starterkit_features() {
     register_nav_menu('footerColOneMenu', 'Footer Column 1 Menu');
     register_nav_menu('footerColTwoMenu', 'Footer Column 2 Menu');
     add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
+    add_image_size('landscape_small', 400, 260, true);
+    add_image_size('portrait_medium', 480, 650, true);
+    add_image_size('hero_bg_size', 1500, 350, true);
 }
 
 add_action('after_setup_theme', 'starterkit_features');
