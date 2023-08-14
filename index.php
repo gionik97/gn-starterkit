@@ -1,16 +1,13 @@
-<?php get_header(); ?>
+<?php 
 
-<div class="page-banner">
-    <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/ocean.jpg') ?>)"></div>
+get_header();
+get_header(); 
+hero(array(
+  'title' => 'Welcome to our blog',
+  'subtitle' => 'Latest News.',
+));
 
-    <div class="page-banner__content container container--narrow">
-        <h1 class="page-banner__title">Welcome to blog</h1>
-
-        <div class="page-banner__intro">
-            <p>Latest News.</p>
-        </div>
-    </div>
-</div>
+?>
 
 <div class="container container--narrow page-section">
 
