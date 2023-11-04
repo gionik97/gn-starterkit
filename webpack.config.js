@@ -45,7 +45,13 @@ const config = {
       },
     ],
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new webpack.ProvidePlugin({
+      $: require.resolve("jquery"),
+      jQuery: require.resolve("jquery"),
+    }),
+  ],
 };
 
 module.exports = config;
