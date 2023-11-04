@@ -82,3 +82,13 @@ function starterkit_adjust_queries($query) {
 }
 
 add_action('pre_get_posts', 'starterkit_adjust_queries');
+
+/**
+ * Add CSS to ACF admin
+ */
+function my_acf_admin_enqueue_scripts() {
+    // register style
+    wp_register_style( 'my-acf-input-css', get_stylesheet_directory_uri() . '/static/css/admin.css', false, '1.0.0' );
+    wp_enqueue_style( 'my-acf-input-css' );
+}
+add_action( 'acf/input/admin_enqueue_scripts', 'my_acf_admin_enqueue_scripts' );
