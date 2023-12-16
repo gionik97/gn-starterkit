@@ -1,5 +1,17 @@
 <?php 
 
+require get_theme_file_path('/includes/search-route.php');
+
+function starterkit_custom_rest() {
+    register_rest_field('post', 'authorName', array(
+        'get_callback' => function() {
+            return get_the_author();
+        }
+    ));
+}
+
+add_action('rest_api_init', 'starterkit_custom_rest');
+
 function hero($args = NULL) {
     if(!isset($args['title'])) {
         $args['title'] = get_the_title();
@@ -38,6 +50,10 @@ function starterkit_files() {
     wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
     wp_enqueue_style('starterkit_main_files', get_theme_file_uri('/dist/main.css'));
     // wp_enqueue_style('starterkit_extra_files', get_theme_file_uri('/build/index.css'));
+
+    wp_localize_script('main-starterkit_js', 'starterkitData', array(
+        'root_url' => get_site_url()
+    ));
 }
 
 add_action('wp_enqueue_scripts', 'starterkit_files');
