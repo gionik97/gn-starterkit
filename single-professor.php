@@ -12,7 +12,7 @@
                 <div class="w-1/3"><?php the_post_thumbnail('portrait_medium'); ?></div>
 
 
-                <div class="w-2/3"><?php the_content(); ?></div>
+                <div class="w-2/3"><?php the_field('main_body_content'); ?></div>
             </div>
 
             <?php 

@@ -1,7 +1,6 @@
 <?php 
 
 get_header();
-get_header(); 
 hero(array(
   'title' => 'Welcome to our blog',
   'subtitle' => 'Latest News.',
